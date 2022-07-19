@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Portal - Portal</title>
+{% endblock %}
+
+{% block content %}
+<div id="fill-form" class="container">
+    <h1>Student Portal Form</h1>
+    <form action="/submitform" id="photo-form" method="post" enctype="multipart/form-data" >
+        <div class="form-group">
+            <h3 style="background-color: #13121369;">Personal information</h3>
+            <div>
+                <div >
+                    <label for="upload">Upload</label>
+                    <input type="file" class="form-control" name="upload" id="upload"  accept="image/*"  required>
+                </div>
+            </div>
+            <div>
+                <div class="col-md-6">
+                    <label for="fname">FirstName:</label>
+                    <input type="text" class="form-control" name="fname" id="fname" placeholder="Type in the firstname" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="mname">MiddleName:</label>
+                    <input type="text" class="form-control" name="mname" id="mname" placeholder="Type in the middlename" required>
+                </div>
+            </div>
+            <div>
+                <div class="col-md-6">
+                    <label for="lname">LastName:</label>
+                    <input type="text" class="form-control" name="lname" id="lname" placeholder="Type in the lastname"  required>
+                </div>
+                <div class="col-md-6">
+                    <label for="email">E-mail</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Type in the email" required>
+                </div>
+            </div>
+            <div>
+                <div class="col-md-6">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" class="form-control" name="dob" id="dob" placeholder="Pick your date of birth" required>
+                </div>
+                <div class="col-md-6">
+                 Male<input type="radio" name="gender"  id="gender" value="male" class="form-control" >Female<input type="radio" id="gender" name="gender" value="female" class="form-control">
+                </div>
+            </div>
+            <div>
+                <div class="col-md-6">
+                    <label for="pnumber">Phone Number</label>
+                    <input type="tel" class="form-control" name="pnumber" id="pnumber" placeholder="Type in your phone number" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="address">Address</label>
+                    <textarea class="form-control" name="address" id="address" placeholder="type in your address here" required> </textarea>
+                </div>
+            </div>
+            <div>
+                <div class="col-md-6">
+                    <label for="sog">State of origin</label>
+                    <input type="text" class="form-control" name="sog" id="sog" placeholder="Type in your state of origin here" required>                 
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="log">Local Government</label>
+                    <input type="text" class="form-control" name="log" id="log" placeholder="Type in your local government" required>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label for="nok">Next of Kin</label>
+                    <input type="text" class="form-control" name="nok" id="nok" placeholder="Type in the name of your next of kin" required>
+                </div>
+            </div>
+            <h3 style="background-color: #13121369;">Academics Related Information</h3>
+            <div>
+                <label for="jscore">Jamb Score</label>
+                <textarea type="number" minlength="2" maxlength="3" class="form-control" name="jscore" id="jscore" style="width: 100px;" required></textarea>
+            </div> 
+            <button id="submit" type="submit" class="btn btn-primary btn-block btn-lg">Submit</button>
+        </div>
+
+
+    </form>
+</div>
+</div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Portal - dashboard</title>
+{% endblock %}
+
+{% block content %}
+<form action="jzvascript:0" method="post" id="ssearch">
+    <div class="form-group">
+        <input placeholder="search result by name" id="sname" type="text">
+        <select name="sstatus" id="sstatus">
+            <option value="">select admission status</option>
+            <option value="admitted">admitted</option>
+            <option value="undecided">undecided</option>
+            <option value="not-admitted">not-admitted</option>
+        </select>
+        <select name="sgender" id="sgender">
+            <option value="">select gender</option>
+            <option value="male">male</option>
+            <option value="female">male</option>
+        </select>
+        <input name="sscore" id="sscore" minlength="2" maxlength="3"
+        placeholder="Enter jamb score" type="number">
+        <button style="background-color: rgba(10, 10, 141, 0.664);" class="btn btn-sm btn-sucesss btn-default" type="submit">search</button>
+    </div>
+</form>
+
+
+<h4 style="background-color: lightblue;">Info! all students record table</h4>
+<div class="col-md-10 main">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>SN</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Jamb Score</th>
+                <th>admission status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for word in words %}
+            <tr>
+                <td>{{ loop.index}}</td>
+                <td class="word-name">{{ word['lastname'] }} {{ word['firstname'] }} {{ word['middlename'] }}</td>
+                <td class="word-gender">{{ word['gender'] }}</td>
+                <td class="word-jambscore">{{ word['jambscore'] }}</td>
+                <td class="word-admissionstatus">{{ word['admissionstatus'] }}</td>
+                <td class="updex"><a class="btn btn-primary btn-md" href="{{ url_for('information', id=word.id) }}">Full view...</a></td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3">The dictionary has no word at the moment,please try again later</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Portal - information</title>
+{% endblock %}
+
+{% block content %}
+<div id ="entire" class="container"> 
+    {% for word in words %}  
+    <div  >
+        <h2 style="color: lightblue;">Personal Information</h2>
+        <img  src="../static/images/{{ word.imagename }}"  alt="passsport" height="150px" width="100px" id="dimage">             
+        <p>Name:{{ word['lastname'] }} {{ word['firstname'] }} {{ word['middlename'] }}</p>
+        <p>Email:{{ word['email'] }}</p>
+        <p>Phone Number:{{ word['phonenumber'] }}</p>
+        <p>Gender:{{ word['gender'] }}</p>
+        <P>Date of Birth:{{ word['dateofbirth'] }}</P>
+    </div>
+    <div style="display: inline;" id="eentire">
+        <h2  style="color: lightblue;">Other Information</h2>
+        <p>State Of Origin:{{ word['stateoforigin'] }}</p>
+        <p>Local Govt:{{ word['localgovernment'] }}</p>
+    </div>
+    <div>
+       <h2  style="color: lightblue;">Academics Related Information</h2>
+       <span>
+           <p>Next of Kin:{{ word['nextofkin'] }}</p>
+           <p>Jamb Score:{{ word['jambscore'] }}</p>
+           <p>status:{{ word['admissionstatus'] }}</p>
+       </span> 
+       <div>
+           <form action="/changestatus" method="post">
+                <input type="number" class="hidden-md hidden-sm hidden-lg hidden-xs" name="sid" value="{{ word['id'] }}">
+
+
+                <select name="sstatus" id="sstatus">
+                    <option value="">select admission status</option>
+                    <option value="admitted">admitted</option>
+                    <option value="undecided">undecided</option>
+                    <option value="not-admitted">not-admitted</option>
+                </select>
+
+                <button class="btn btn-primary btn-sm" type="submit">Change status</button>
+
+           </form>
+       </div>      
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

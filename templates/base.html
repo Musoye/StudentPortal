@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }} ">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }} ">
+        <script src="{{ url_for('static', filename='js/jquery.js') }} "></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.js') }} "></script>
+        <script src="{{ url_for('static', filename='json/data.json') }} "></script>
+        <script src="{{ url_for('static', filename='js/scripts.js') }} "></script>
+        {% block title %}{% endblock %}
+
+    </head>
+    <body>
+
+        <nav class="navbar navbar-inverse ">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" alt=""></a>
+              </div>
+              <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                  <li {% block home_active %}{% endblock %}><a href="{{ url_for('index') }}">Home</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li {% block dash_active %}{% endblock %}><a href="{{ url_for('portal') }}">Get Started</a></li>
+                </ul>
+              </div><!--/.nav-collapse -->
+            </div>
+          </nav>
+
+        
+        {% block content %}{% endblock %}
+
+        <footer class="footer">
+            <div class="container">
+              <p>&COPY;2022-Musoye.All Rights Reserved.</p>
+            </div>
+          </footer>
+        
+    </body>
+</html>
