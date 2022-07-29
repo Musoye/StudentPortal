@@ -8,11 +8,11 @@ import datetime
 
 app = Flask(__name__)
 
-app.secret_key = ''
+app.secret_key = 'mustaphasecret'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-app.config['MYSQL_DATABASE_DB'] = ''
+app.config['MYSQL_DATABASE_DB'] = 'studentportal'
 app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = ''
+app.config['MYSQL_DATABASE_PASSWORD'] = 'ROVER791mus&'
 
 mysql = MySQL(app, cursorclass=pymysql.cursors.DictCursor)
 
@@ -63,7 +63,7 @@ def submitform():
         conn.commit()
         cur.close()
 
-        return redirect('/pdisplay')
+        return redirect(url_for('pdisplay'))
         
 
 
@@ -105,8 +105,9 @@ def information(id):
 def change_status():
     if request.method == 'POST': 
         if request.form['sstatus'] == "":
+            sid = request.form['sid']
 
-            return redirect('/pdisplay')
+            return redirect(url_for('information',id=sid))
 
         else:
             sid = request.form['sid']
@@ -117,7 +118,7 @@ def change_status():
             conn.commit()
             cur.close()
 
-            return redirect('/pdisplay')
+            return redirect(url_for('information',id=sid))
 
 
 
