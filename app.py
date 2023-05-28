@@ -12,7 +12,7 @@ app.secret_key = 'mustaphasecret'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 app.config['MYSQL_DATABASE_DB'] = 'studentportal'
 app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'ROVER791mus&'
+app.config['MYSQL_DATABASE_PASSWORD'] = '' 
 
 mysql = MySQL(app, cursorclass=pymysql.cursors.DictCursor)
 
